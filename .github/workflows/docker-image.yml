@@ -24,7 +24,12 @@ jobs:
     - name: login to ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
-
+    - name: Log in to Docker Hub
+      uses: docker/login-action@vv3.0.0
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+        
     - name: build docker image
       run: docker build -t theneverendingstory/frontend .
       
