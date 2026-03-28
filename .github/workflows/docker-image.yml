@@ -31,11 +31,21 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
         
-    - name: build docker image
-      run: docker build -t theneverendingstory/frontend .
-      
-    - name: tag docker image
-      run: docker tag theneverendingstory/frontend:latest 837720593432.dkr.ecr.us-west-2.amazonaws.com/theneverendingstory/frontend:latest
+    - name: build, tag, push
+      run: docker build -t theneverendingstory/frontend . && docker tag theneverendingstory/frontend:latest 837720593432.dkr.ecr.us-west-2.amazonaws.com/theneverendingstory/frontend:latest && docker push 837720593432.dkr.ecr.us-west-2.amazonaws.com/theneverendingstory/frontend:latest
 
-    - name: push docker image
-      run: docker push 837720593432.dkr.ecr.us-west-2.amazonaws.com/theneverendingstory/frontend:latest
+    - name: Render Amazon ECS task definition
+      id: render-task-def
+      uses: aws-actions/amazon-ecs-render-task-definition@v1
+      with:
+        task-definition: task-definition.json # Path to your task-definition.json file
+        container-name: your-container-name # Name of the container in your task def
+        image: theneverendingstory/frontend:latest
+
+    - name: Deploy to Amazon ECS service
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      with:
+        task-definition: ${{ steps.render-task-def.outputs.task-definition }}
+        service: your-ecs-service-name # Replace with your ECS service name
+        cluster: your-ecs-cluster-name # Replace with your ECS cluster name
+        wait-for-service-stability: true
