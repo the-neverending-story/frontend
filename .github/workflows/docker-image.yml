@@ -1,0 +1,35 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4
+
+    - name: configure aws credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-central-1
+
+    - name: login to ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
+    - name: build docker image
+      run: docker build -t theneverendingstory/frontend .
+      
+    - name: tag docker image
+      run: docker tag theneverendingstory/frontend:latest 837720593432.dkr.ecr.us-west-2.amazonaws.com/theneverendingstory/frontend:latest
+
+    - name: push docker image
+      run: docker push 837720593432.dkr.ecr.us-west-2.amazonaws.com/theneverendingstory/frontend:latest
