@@ -1,0 +1,51 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4
+
+    - name: configure aws credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-west-2
+
+    - name: login to ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+      
+    - name: docker login
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+        
+    - name: build, tag, push
+      run: docker build -t theneverendingstory/frontend . && docker tag theneverendingstory/frontend:latest 837720593432.dkr.ecr.us-west-2.amazonaws.com/theneverendingstory/frontend:latest && docker push 837720593432.dkr.ecr.us-west-2.amazonaws.com/theneverendingstory/frontend:latest
+
+    - name: Render Amazon ECS task definition
+      id: render-task-def
+      uses: aws-actions/amazon-ecs-render-task-definition@v1
+      with:
+        task-definition: task-definition.json # Path to your task-definition.json file
+        container-name: your-container-name # Name of the container in your task def
+        image: theneverendingstory/frontend:latest
+
+    - name: Deploy to Amazon ECS service
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      with:
+        task-definition: ${{ steps.render-task-def.outputs.task-definition }}
+        service: your-ecs-service-name # Replace with your ECS service name
+        cluster: your-ecs-cluster-name # Replace with your ECS cluster name
+        wait-for-service-stability: true
