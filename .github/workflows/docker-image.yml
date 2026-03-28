@@ -34,22 +34,22 @@ jobs:
     - name: build, tag, push
       run: docker build -t theneverendingstory/frontend . && docker tag theneverendingstory/frontend:latest 837720593432.dkr.ecr.us-west-2.amazonaws.com/theneverendingstory/frontend:latest && docker push 837720593432.dkr.ecr.us-west-2.amazonaws.com/theneverendingstory/frontend:latest
       
-    - name: Download task definition
+    - name: download task definition
       run: |
-        aws ecs describe-task-definition --task-definition my-task-def-family --query taskDefinition > task-definition.json
+        aws ecs describe-task-definition --task-definition frontend --query taskDefinition > task-definition.json
         
-    - name: Render Amazon ECS task definition
+    - name: fill in task definition
       id: render-task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
         task-definition: task-definition.json # Path to your task-definition.json file
-        container-name: your-container-name # Name of the container in your task def
+        container-name: frontend # Name of the container in your task def
         image: theneverendingstory/frontend:latest
 
     - name: Deploy to Amazon ECS service
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: ${{ steps.render-task-def.outputs.task-definition }}
-        service: your-ecs-service-name # Replace with your ECS service name
-        cluster: your-ecs-cluster-name # Replace with your ECS cluster name
+        service: frontend # Replace with your ECS service name
+        cluster: the-neverending-story-cluster # Replace with your ECS cluster name
         wait-for-service-stability: true
