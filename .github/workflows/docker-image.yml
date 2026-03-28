@@ -33,7 +33,11 @@ jobs:
         
     - name: build, tag, push
       run: docker build -t theneverendingstory/frontend . && docker tag theneverendingstory/frontend:latest 837720593432.dkr.ecr.us-west-2.amazonaws.com/theneverendingstory/frontend:latest && docker push 837720593432.dkr.ecr.us-west-2.amazonaws.com/theneverendingstory/frontend:latest
-
+      
+    - name: Download task definition
+      run: |
+        aws ecs describe-task-definition --task-definition my-task-def-family --query taskDefinition > task-definition.json
+        
     - name: Render Amazon ECS task definition
       id: render-task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
