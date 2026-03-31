@@ -1,0 +1,16 @@
+.homePage {
+    height: 100%;
+    width: 100%;
+    background-color: gray;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1, h3 {
+    color: white;
+    font-family:'Courier New', Courier, monospace;
+    margin: 0px;
+    padding-bottom: 25px;
+}
