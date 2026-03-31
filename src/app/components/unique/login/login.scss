@@ -1,0 +1,30 @@
+.loginHolder {
+position: absolute;
+}
+
+.rotated {
+    position: absolute;
+    rotate: -45deg;
+    background-color: black;
+    height: 200px;
+    width: 200px;
+    left: -100px;
+    top: -60px;
+}
+
+.buttonContainer {
+    position: absolute;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    color: white;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    padding-top: 5px;
+    font-size: 15px;
+}
