@@ -16,7 +16,7 @@ export const appConfig: ApplicationConfig = {
 
       return {
         link: httpLink.create({
-          uri: 'http://172.31.49.106:3000',
+          uri: 'http://backend-alb-1352487503.us-west-2.elb.amazonaws.com:3000',
           withCredentials: true
         }),
         cache: new InMemoryCache(),
