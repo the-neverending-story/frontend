@@ -1,0 +1,43 @@
+.registerPage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+}
+
+label {
+    color: white;
+    font-weight: bold;
+}
+
+.register {
+    display: flex;
+    flex-flow: column;
+    padding: 25px;
+}
+
+form {
+    display: flex;
+    flex-flow: column;
+}
+
+input {
+    margin-bottom: 15px;
+    height: 25px;
+    border-radius: 5px;
+
+    &:focus {
+        outline: none;
+        border-color: rgb(0, 217, 255);
+    }
+}
+
+button {
+    height: 25px;
+}

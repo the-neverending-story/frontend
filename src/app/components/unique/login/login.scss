@@ -19,12 +19,16 @@ position: absolute;
     flex-direction: column;
 }
 
-button {
+a {
     color: white;
-    background-color: transparent;
     border: none;
-    cursor: pointer;
     text-transform: uppercase;
     padding-top: 5px;
     font-size: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
 }

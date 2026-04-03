@@ -1,0 +1,17 @@
+<div class="registerPage">
+    <div class="register">
+        <h1>Become a Weaver</h1>
+        <form [formGroup]="registerForm" (submit)="submitRegister()">
+            <label for="email">Email</label>
+            <input id="email" type="text" formControlName="email" placeholder="Enter email" />
+
+            <label for="username">Username</label>
+            <input id="username" type="text" formControlName="username" placeholder="Enter username" />
+
+            <label for="password">Password</label>
+            <input id="password" type="password" formControlName="password" placeholder="Enter password"/>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</div>
