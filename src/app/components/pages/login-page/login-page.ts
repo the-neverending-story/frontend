@@ -44,8 +44,8 @@ export class LoginPage {
       }
     }).subscribe({
       next: ({ data }) => {
-        localStorage.setItem('user_data', JSON.stringify({username: data?.login.username, role: data?.login.role}))
         this.router.navigate(['/'])
+        localStorage.setItem('user_data', JSON.stringify({username: data?.login.username, role: data?.login.role}))
       }
     })
 

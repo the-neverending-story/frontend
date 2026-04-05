@@ -51,8 +51,8 @@ export class RegisterPage {
       }
     }).subscribe({
       next: ({ data }) => {
-        localStorage.setItem('user_data', JSON.stringify({username: data?.register.username, role: data?.register.role}))
         this.router.navigate(['/'])
+        localStorage.setItem('user_data', JSON.stringify({username: data?.register.username, role: data?.register.role}))
       },
       error: (error) => {
         alert(error.message)

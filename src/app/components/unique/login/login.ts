@@ -14,7 +14,7 @@ export class Login {
   localStorage = localStorage
   
   logout() {
-    this.localStorage.removeItem('user_data')
     this.router.navigate(['/'])
+    this.localStorage.removeItem('user_data')
   }
 }
