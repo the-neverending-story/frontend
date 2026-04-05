@@ -25,6 +25,7 @@ label {
 form {
     display: flex;
     flex-flow: column;
+    width: 350px;
 }
 
 input {
@@ -40,4 +41,17 @@ input {
 
 button {
     height: 25px;
+}
+
+.error {
+    color: red;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0px;
+}
+
+li {
+    text-wrap: wrap;
 }

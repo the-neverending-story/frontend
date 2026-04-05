@@ -17,6 +17,7 @@ export const appConfig: ApplicationConfig = {
       return {
         link: httpLink.create({
           uri: 'http://backend-alb-1352487503.us-west-2.elb.amazonaws.com:3000/graphql',
+          //uri: 'http://localhost:3000/graphql',
           withCredentials: true
         }),
         cache: new InMemoryCache(),

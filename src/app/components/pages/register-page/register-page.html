@@ -4,13 +4,49 @@
         <form [formGroup]="registerForm" (submit)="submitRegister()">
             <label for="email">Email</label>
             <input id="email" type="text" formControlName="email" placeholder="Enter email" />
+            <ul>
+            @if((this.registerForm.value.email?.length ?? 0) > 0) {
+                @if(this.registerForm.get('email')?.invalid) {
+                    <li class="error">Invalid email</li>
+                }
+            }
+            </ul>
 
             <label for="username">Username</label>
             <input id="username" type="text" formControlName="username" placeholder="Enter username" />
+            <ul>
+            @if((this.registerForm.value.username?.length ?? 0) > 0) {
+                @if((this.registerForm.value.username?.length ?? 0) < 8) {
+                    <li class="error">Username must be at least 8 characters</li>
+                }
+                @if(this.registerForm.get('username')?.invalid) {
+                    <li class="error">Username must only consist of A-Z, 0-9</li>
+                }
+            }
+            </ul>
 
             <label for="password">Password</label>
             <input id="password" type="password" formControlName="password" placeholder="Enter password"/>
+            <ul>
+            @if((this.registerForm.value.password?.length ?? 0) > 0) {
+                @if((this.registerForm.value.password?.length ?? 0) < 8) {
+                    <li class="error">Password must be at least 8 characters</li>
+                }
+                @if(this.registerForm.get('password')?.invalid) {
+                    <li class="error">Password must contain at least one of each: uppercase letter, lowercase letter, number, special character</li>
+                }
+            }
+            </ul>
 
+            <label for="confirmpassword">Confirm Password</label>
+            <input id="confirmpassword" type="password" formControlName="confirmpassword" placeholder="Re-enter password"/>
+            <ul>
+            @if((this.registerForm.value.confirmpassword?.length ?? 0) > 0) {
+                @if(this.registerForm.value.confirmpassword !== this.registerForm.value.password) {
+                    <li class="error">Passwords do not match</li>
+                }
+            }
+            </ul>
             <button type="submit">Register</button>
         </form>
     </div>
