@@ -3,7 +3,7 @@
         <h1>Become a Weaver</h1>
         <form [formGroup]="registerForm" (submit)="submitRegister()">
             <label for="email">Email</label>
-            <input id="email" type="text" formControlName="email" placeholder="Enter email" />
+            <input type="text" formControlName="email" placeholder="Enter email" />
             <ul>
             @if((this.registerForm.value.email?.length ?? 0) > 0) {
                 @if(this.registerForm.get('email')?.invalid) {
@@ -13,7 +13,7 @@
             </ul>
 
             <label for="username">Username</label>
-            <input id="username" type="text" formControlName="username" placeholder="Enter username" />
+            <input type="text" formControlName="username" placeholder="Enter username" />
             <ul>
             @if((this.registerForm.value.username?.length ?? 0) > 0) {
                 @if((this.registerForm.value.username?.length ?? 0) < 8) {
@@ -26,7 +26,7 @@
             </ul>
 
             <label for="password">Password</label>
-            <input id="password" type="password" formControlName="password" placeholder="Enter password"/>
+            <input type="password" formControlName="password" placeholder="Enter password"/>
             <ul>
             @if((this.registerForm.value.password?.length ?? 0) > 0) {
                 @if((this.registerForm.value.password?.length ?? 0) < 8) {
@@ -39,7 +39,7 @@
             </ul>
 
             <label for="confirmpassword">Confirm Password</label>
-            <input id="confirmpassword" type="password" formControlName="confirmpassword" placeholder="Re-enter password"/>
+            <input type="password" formControlName="confirmpassword" placeholder="Re-enter password"/>
             <ul>
             @if((this.registerForm.value.confirmpassword?.length ?? 0) > 0) {
                 @if(this.registerForm.value.confirmpassword !== this.registerForm.value.password) {

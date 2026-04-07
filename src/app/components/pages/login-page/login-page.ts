@@ -21,7 +21,6 @@ interface LoginResponse {
 @Component({
   selector: 'app-login-page',
   imports: [ReactiveFormsModule],
-  providers: [Apollo, Router],
   templateUrl: './login-page.html',
   styleUrl: './login-page.scss',
 })
@@ -44,8 +43,9 @@ export class LoginPage {
       }
     }).subscribe({
       next: ({ data }) => {
-        this.router.navigate(['/'])
+        this.router.navigate([''])
         localStorage.setItem('user_data', JSON.stringify({username: data?.login.username, role: data?.login.role}))
+
       }
     })
 

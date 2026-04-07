@@ -4,7 +4,6 @@ import { Router, RouterLink } from '@angular/router';
 @Component({
   selector: 'app-login',
   imports: [RouterLink],
-  providers: [Router],
   templateUrl: './login.html',
   styleUrl: './login.scss'
 })
@@ -14,7 +13,7 @@ export class Login {
   localStorage = localStorage
   
   logout() {
-    this.router.navigate(['/'])
     this.localStorage.removeItem('user_data')
+    this.router.navigate([''])
   }
 }

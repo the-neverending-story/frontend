@@ -3,10 +3,10 @@
     <div class="buttonContainer">
         @if(localStorage.getItem('user_data')) {
         <button (click)="logout()">Logout</button>
-        <a routerLink="profile">Profile</a>
+        <a [routerLink]="['profile']">Profile</a>
         } @else {
-        <a routerLink="login">Login</a>
-        <a routerLink="register">Register</a>
+        <a [routerLink]="['login']">Login</a>
+        <a [routerLink]="['register']">Register</a>
         }
     </div>
 </div>

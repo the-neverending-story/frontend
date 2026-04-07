@@ -1,0 +1,29 @@
+<div class="base">
+    <h1>What are we making today?</h1>
+    <form [formGroup]="creationForm" class="creationForm" (ngSubmit)="submitCreation()">
+        <div class="formElement">
+            <label for="category">I want to make a new: </label>
+            <select name="category" formControlName="category">
+                <option selected hidden></option>
+                <option value="story">story</option>
+                <option value="concept">concept</option>
+                <option value="location">location</option>
+                <option value="character">character</option>
+            </select>
+        </div>
+        <p>(Note: Stories do not generate a tag to be referenced in other creations. The category CANNOT be changed
+            afterwards.)</p>
+        @if(this.creationForm.value.category !== "") {
+
+        <div class="formElement contentDiv">
+            <h2 for="content">Let the magic begin...</h2>
+            <input class="title" name="title" placeholder="Name" formControlName="name" />
+            <textarea name="content" formControlName="content" placeholder="Content"></textarea>
+        </div>
+
+        @if(this.creationForm.valid) {
+        <button type="submit">Submit Creation</button>
+        }
+        }
+    </form>
+</div>
