@@ -28,6 +28,9 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: replace localhost url
+      run: sed 's@localhost@backend-alb-1352487503.us-west-2.elb.amazonaws.com' src/app/app.config.ts
         
     - name: build, tag, push
       run: docker build -t theneverendingstory/frontend . && docker tag theneverendingstory/frontend:latest 837720593432.dkr.ecr.us-west-2.amazonaws.com/theneverendingstory/frontend:latest && docker push 837720593432.dkr.ecr.us-west-2.amazonaws.com/theneverendingstory/frontend:latest
