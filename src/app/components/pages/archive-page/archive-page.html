@@ -1,0 +1,13 @@
+<div class="base">
+    @for (creation of creations; track creation.id) {
+    <a class="archiveItem" [routerLink]="[creation.id]">
+        <div class="name"><p>{{ creation.name }}</p></div>
+        <div class="category"><p>{{ creation.category }}</p></div>
+        <div class="author"><p>{{ creation.author_username }}</p></div>
+        <div class="createdAt"><p>{{ creation.created_at.toString() }}</p></div>
+        <div class="rating"><p>{{ creation.rating }}</p></div>
+    </a>
+    } @empty {
+        <h1>Loading creations...</h1>
+    }
+</div>
