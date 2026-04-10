@@ -2,13 +2,17 @@
     <div class="login">
         <h1>Welcome back, Weaver</h1>
         <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
-            <label for="username">Username</label>
-            <input type="text" formControlName="username" placeholder="Enter username" />
+            <div class="formGroup">
+                <label for="username">Username</label>
+                <input id="username" type="text" formControlName="username" placeholder="Enter username" />
+            </div>
 
-            <label for="password">Password</label>
-            <input type="password" formControlName="password" placeholder="Enter password"/>
+            <div class="formGroup">
+                <label for="password">Password</label>
+                <input id="password" type="password" formControlName="password" placeholder="Enter password"/>
+            </div>
 
-            <button type="submit">Login</button>
+            <button type="submit" [disabled]="!loginForm.valid">Login</button>
         </form>
     </div>
 </div>

@@ -1,13 +1,27 @@
 <div class="base">
-    @for (creation of creations; track creation.id) {
-    <a class="archiveItem" [routerLink]="[creation.id]">
-        <div class="name"><p>{{ creation.name }}</p></div>
-        <div class="category"><p>{{ creation.category }}</p></div>
-        <div class="author"><p>{{ creation.author_username }}</p></div>
-        <div class="createdAt"><p>{{ creation.created_at.toString() }}</p></div>
-        <div class="rating"><p>{{ creation.rating }}</p></div>
-    </a>
-    } @empty {
-        <h1>Loading creations...</h1>
+    @if (creations.length > 0) {
+        <div class="archiveHeader">
+            <div class="name">Name</div>
+            <div class="category">Category</div>
+            <div class="author">Author</div>
+            <div class="createdAt">Date</div>
+            <div class="rating">Rating</div>
+        </div>
+
+        <div class="archiveList">
+            @for (creation of creations; track creation.id) {
+                <a class="archiveItem" [routerLink]="[creation.id]">
+                    <div class="name">{{ creation.name }}</div>
+                    <div class="category">{{ creation.category }}</div>
+                    <div class="author">{{ creation.author_username }}</div>
+                    <div class="createdAt">{{ creation.created_at }}</div>
+                    <div class="rating">{{ creation.rating }}</div>
+                </a>
+            }
+        </div>
+    } @else {
+        <div class="loadingState">
+            <h1>LOADING...</h1>
+        </div>
     }
 </div>
