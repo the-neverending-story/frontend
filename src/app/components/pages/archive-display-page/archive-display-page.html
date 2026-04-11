@@ -1,0 +1,42 @@
+<div class="base">
+    <article class="creationCard">
+        <header>@if(name === '') {
+            <h1 class="name">Loading...</h1>
+            } @else {
+            <h1 class="name">{{ name }}</h1>
+            }
+
+            <p class="meta">Woven by <span>{{ authorUsername }}</span></p>
+            <p class="meta">Type: <span>{{ category }}</span></p>
+        </header>
+
+        <section class="content">
+            {{ content }}
+        </section>
+
+        <footer class="ratingSection">
+            <h3>Community Rating</h3>
+            <div class="voteContainer">
+                @if(currentUserVote !== 'false') {
+                <button class="downvote" (click)="rateNegative()" title="Upvote">
+                    -
+                </button>
+                } @else {
+                <button class="downvote" (click)="rateNegative()" title="Upvote" disabled>
+                    -
+                </button>
+                }
+                <p class="currentTotal">{{ rating }}</p>
+                @if(currentUserVote !== 'true') {
+                <button class="upvote" (click)="ratePositive()" title="Downvote">
+                    +
+                </button>
+                } @else {
+                <button class="upvote" (click)="ratePositive()" title="Downvote" disabled>
+                    +
+                </button>
+                }
+            </div>
+        </footer>
+    </article>
+</div>

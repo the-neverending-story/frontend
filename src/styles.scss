@@ -19,7 +19,7 @@ time, mark, audio, video {
 	vertical-align: baseline;
     font-family:'Courier New', Courier, monospace;
 }
-/* HTML5 display-role reset for older browsers */
+
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
@@ -41,4 +41,29 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a252f;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #34495e;
+    border-radius: 5px;
+    border: 2px solid #1a252f;
+    transition: background 0.3s ease;
+
+    &:hover {
+        background: #bdc3c7;
+    }
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #34495e #1a252f;
 }

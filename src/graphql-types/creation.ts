@@ -10,13 +10,24 @@ interface GetCreationsResponse {
   getCreations: Creation[]
 }
 
+interface GetCreationResponse {
+  getCreation: Creation,
+  getRate: Rate
+}
+
 interface Creation {
   author_username: string,
   category: string,
   created_at: string,
   id: string,
   name: string,
-  rating: number
+  rating: number,
+  content: string;
+}
+
+interface Rate {
+  id: string,
+  is_positive: string
 }
 
 const CREATE_CREATION = gql`
@@ -40,5 +51,21 @@ const GET_CREATIONS = gql`
   }
 `
 
-export type { CreateCreationResponse, GetCreationsResponse, Creation }
-export { CREATE_CREATION, GET_CREATIONS }
+const GET_CREATION = gql`
+  query GetCreation($id: String!) {
+    getCreation(id: $id) {
+      name
+      rating
+      author_username
+      content
+      category
+    }
+
+    getRate(id: $id) {
+      is_positive
+    }
+  }
+`
+
+export type { CreateCreationResponse, GetCreationsResponse, Creation, GetCreationResponse }
+export { CREATE_CREATION, GET_CREATIONS, GET_CREATION }
