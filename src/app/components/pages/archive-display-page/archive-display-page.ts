@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, inject, Input, OnInit } from '@angular/co
 import { Apollo } from 'apollo-angular';
 import { GET_CREATION, GetCreationResponse } from '../../../../graphql-types/creation';
 import { RATE } from '../../../../graphql-types/rate';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-archive-display-page',
@@ -12,6 +13,7 @@ import { RATE } from '../../../../graphql-types/rate';
 export class ArchiveDisplayPage implements OnInit {
   private apollo: Apollo = inject(Apollo);
   private ref: ChangeDetectorRef = inject(ChangeDetectorRef)
+  private router: Router = inject(Router)
 
   @Input() id!: string;
   name = '';
@@ -42,8 +44,8 @@ export class ArchiveDisplayPage implements OnInit {
   }
 
   ratePositive() {
+    if(!localStorage.getItem('user_data')) { this.router.navigate(['register']); }
     if(this.currentUserVote === "true") { return; }
-    if(this.currentUserVote === "") { this.rating += 1 } else { this.rating += 2 }
     this.currentUserVote = "true"
     this.apollo.mutate({
       mutation: RATE,
@@ -55,8 +57,8 @@ export class ArchiveDisplayPage implements OnInit {
   }
 
   rateNegative() {
+    if(!localStorage.getItem('user_data')) { this.router.navigate(['register']); }
     if(this.currentUserVote === "false") { return; }
-    if(this.currentUserVote === "") { this.rating -= 1 } else { this.rating -= 2 }
     this.currentUserVote = "false"
     this.apollo.mutate({
       mutation: RATE,

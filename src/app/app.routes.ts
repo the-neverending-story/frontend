@@ -5,6 +5,7 @@ import { RegisterPage } from './components/pages/register-page/register-page';
 import { CreatePage } from './components/pages/create-page/create-page';
 import { ArchivePage } from './components/pages/archive-page/archive-page';
 import { ArchiveDisplayPage } from './components/pages/archive-display-page/archive-display-page';
+import { VotePage } from './components/pages/vote-page/vote-page';
 
 const routeConfig: Routes = [
     {
@@ -36,6 +37,11 @@ const routeConfig: Routes = [
         path: 'archive/:id',
         component: ArchiveDisplayPage,
         title: 'Archive'
+    },
+    {
+        path: 'vote',
+        component: VotePage,
+        title: 'Vote'
     }
 ]
 
