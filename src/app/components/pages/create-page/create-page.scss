@@ -10,6 +10,7 @@
     padding: 40px 20px;
     box-sizing: border-box;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -24,7 +25,6 @@ h1 {
 
 .creationForm {
     width: 100%;
-    max-width: 800px;
     display: flex;
     flex-flow: column;
     gap: 25px;
@@ -84,8 +84,6 @@ select {
 }
 
 .contentDiv {
-    animation: fadeIn 0.5s ease-out forwards;
-    
     h2 {
         font-size: 1.5em;
         margin: 10px 0;
@@ -136,20 +134,5 @@ button {
         background-color: #34495e;
         color: #7f8c8d;
         cursor: not-allowed;
-    }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@media (max-width: 600px) {
-    .creationForm {
-        padding: 20px;
-    }
-    
-    h1 {
-        font-size: 2em;
     }
 }

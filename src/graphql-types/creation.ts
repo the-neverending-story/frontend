@@ -15,6 +15,13 @@ interface GetCreationResponse {
   getRate: Rate
 }
 
+interface GetVoteableResponse {
+  stories: Creation[],
+  concepts: Creation[],
+  characters: Creation[],
+  locations: Creation[]
+}
+
 interface Creation {
   author_username: string,
   category: string,
@@ -35,6 +42,30 @@ const CREATE_CREATION = gql`
     createCreation(name: $name, category: $category, content: $content) {
         id
     }
+  }
+`
+
+const GET_VOTEABLE = gql`
+  query GetVoteable {
+    stories: getCreations(page: 1, category: "story") {
+      name
+      id
+    }
+
+    concepts: getCreations(page: 1, category: "concept") {
+      name
+      id
+    } 
+    
+    locations: getCreations(page: 1, category: "location") {
+      name
+      id
+    }
+
+    characters: getCreations(page: 1, category: "character") {
+      name
+      id
+    } 
   }
 `
 
@@ -67,5 +98,5 @@ const GET_CREATION = gql`
   }
 `
 
-export type { CreateCreationResponse, GetCreationsResponse, Creation, GetCreationResponse }
-export { CREATE_CREATION, GET_CREATIONS, GET_CREATION }
+export type { CreateCreationResponse, GetCreationsResponse, Creation, GetCreationResponse, GetVoteableResponse }
+export { CREATE_CREATION, GET_CREATIONS, GET_CREATION, GET_VOTEABLE }

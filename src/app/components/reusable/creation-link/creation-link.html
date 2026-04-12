@@ -1,0 +1,9 @@
+<a class="archiveItem" [routerLink]="['/archive', creation().id]">
+    <div class="name">{{ creation().name }}</div>
+    @if(!isInVotingPhase()) {
+    <div class="category">{{ creation().category }}</div>
+    <div class="author">{{ creation().author_username }}</div>
+    <div class="createdAt">{{ creation().created_at }}</div>
+    <div class="rating">{{ creation().rating }}</div>
+    }
+</a>
