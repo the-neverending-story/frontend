@@ -20,9 +20,9 @@ export class ArchiveDisplayPage implements OnInit {
   content = '';
   authorUsername = '';
   rating = 0;
-  category  = ''
-
-  currentUserVote  = ''
+  category = ''
+  isLoading = true;
+  currentUserVote = '';
 
   ngOnInit(): void {
     this.apollo.query<GetCreationResponse>({
@@ -38,15 +38,17 @@ export class ArchiveDisplayPage implements OnInit {
         this.rating = data!.getCreation.rating;
         this.category = data!.getCreation.category;
         this.currentUserVote = data!.getRate.is_positive;
+        this.isLoading = false
+
         this.ref.detectChanges()
       }
     })
   }
 
   ratePositive() {
-    if(!localStorage.getItem('user_data')) { this.router.navigate(['register']); }
-    if(this.currentUserVote === "true") { return; }
+    this.rating += this.currentUserVote === "false" ? 2 : 1;
     this.currentUserVote = "true"
+    if(!localStorage.getItem('user_data')) { this.router.navigate(['register']); }
     this.apollo.mutate({
       mutation: RATE,
       variables: {
@@ -57,9 +59,9 @@ export class ArchiveDisplayPage implements OnInit {
   }
 
   rateNegative() {
-    if(!localStorage.getItem('user_data')) { this.router.navigate(['register']); }
-    if(this.currentUserVote === "false") { return; }
+    this.rating -= this.currentUserVote === "true" ? 2 : 1;
     this.currentUserVote = "false"
+    if(!localStorage.getItem('user_data')) { this.router.navigate(['register']); }
     this.apollo.mutate({
       mutation: RATE,
       variables: {

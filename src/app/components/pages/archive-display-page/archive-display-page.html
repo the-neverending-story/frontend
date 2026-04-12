@@ -17,13 +17,17 @@
         <footer class="ratingSection">
             <h3>Community Rating</h3>
             <div class="voteContainer">
+                @if(!isLoading && currentUserVote !== "false") {
                 <button class="downvote" (click)="rateNegative()" title="Upvote">
                     -
                 </button>
+                }
                 <p class="currentTotal">{{ rating }}</p>
+                @if(!isLoading && currentUserVote !== "true") {
                 <button class="upvote" (click)="ratePositive()" title="Downvote">
                     +
                 </button>
+                }
             </div>
         </footer>
     </article>
