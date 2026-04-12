@@ -10,13 +10,7 @@
 
         <div class="archiveList">
             @for (creation of creations; track creation.id) {
-                <a class="archiveItem" [routerLink]="[creation.id]">
-                    <div class="name">{{ creation.name }}</div>
-                    <div class="category">{{ creation.category }}</div>
-                    <div class="author">{{ creation.author_username }}</div>
-                    <div class="createdAt">{{ creation.created_at }}</div>
-                    <div class="rating">{{ creation.rating }}</div>
-                </a>
+                <app-creation-link [creation]="creation" />
             }
         </div>
     } @else {

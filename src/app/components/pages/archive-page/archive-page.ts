@@ -1,11 +1,11 @@
 import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { GetCreationsResponse, GET_CREATIONS, Creation } from '../../../../graphql-types/creation';
 import { Apollo } from 'apollo-angular';
-import { RouterLink } from '@angular/router';
+import { CreationLink } from '../../reusable/creation-link/creation-link';
 
 @Component({
   selector: 'app-archive-page',
-  imports: [RouterLink],
+  imports: [CreationLink],
   templateUrl: './archive-page.html',
   styleUrl: './archive-page.scss',
 })

@@ -1,0 +1,47 @@
+:host {
+    display: block;
+    width: 100%;
+}
+
+.archiveItem {
+    display: flex;
+    padding: 12px 20px;
+    background-color: rgba(26, 37, 47, 0.6);
+    text-decoration: none;
+    color: #ecf0f1;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    border-radius: 4px;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    width: 100%;
+    box-sizing: border-box;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: translateX(5px);
+        box-shadow: -5px 0 0 #ecf0f1;
+    }
+
+    .name {
+        flex: 2;
+        text-align: left;
+        font-weight: bold;
+        font-size: 1em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .category, .author, .createdAt, .rating {
+        flex: 1;
+        text-align: center;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 0.95em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .category { text-transform: capitalize; color: #bdc3c7; }
+    .rating { font-weight: bold; color: #f1c40f; }
+}
