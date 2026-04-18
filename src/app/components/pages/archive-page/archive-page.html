@@ -1,5 +1,29 @@
 <div class="base">
-    @if (creations.length > 0) {
+    <form [formGroup]="filterForm" class="filters" (ngSubmit)="search()">
+        <h2>Filters</h2>
+        <div class="formGroup">
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Search by name" formControlName="name"/>
+        </div>
+        <div class="formGroup">
+            <label for="author">Author</label>
+            <input id="author" type="text" placeholder="Search by author" formControlName="author"/>
+        </div>
+        <div class="formGroup">
+            <label for="category">Category</label>
+            <select id="category" name="category" formControlName="category">
+                <option value="" selected disabled hidden>Select a category</option>
+                <option value="story">Story</option>
+                <option value="concept">Concept</option>
+                <option value="location">Location</option>
+                <option value="character">Character</option>
+                <option value="none">None</option>
+            </select>
+        </div>
+        <button type="submit">Apply Filters</button>
+    </form>
+    <div class="archive">
+    @if (!isLoading) {
         <div class="archiveHeader">
             <div class="name">Name</div>
             <div class="category">Category</div>
@@ -18,4 +42,5 @@
             <h1>LOADING...</h1>
         </div>
     }
+    </div>
 </div>
