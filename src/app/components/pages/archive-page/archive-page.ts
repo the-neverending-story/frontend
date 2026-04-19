@@ -29,8 +29,6 @@ export class ArchivePage implements OnInit {
   }
 
   search() {
-    if(this.filterForm.pristine) { return; }
-    this.filterForm.markAsPristine()
     this.isLoading = true
     this.creations = [];
     this.ref.detectChanges();
