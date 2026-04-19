@@ -15,7 +15,7 @@ export class ArchivePage implements OnInit {
   private ref: ChangeDetectorRef = inject(ChangeDetectorRef)
 
   filterForm = new FormGroup({
-    category: new FormControl(''),
+    category: new FormControl('none'),
     name: new FormControl(''),
     author: new FormControl('')
   })
@@ -29,6 +29,8 @@ export class ArchivePage implements OnInit {
   }
 
   search() {
+    if(this.filterForm.pristine) { return; }
+    this.filterForm.markAsPristine()
     this.isLoading = true
     this.creations = [];
     this.ref.detectChanges();
