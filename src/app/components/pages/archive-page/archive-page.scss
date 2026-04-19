@@ -58,16 +58,9 @@
     background-color: rgba(26, 37, 47, 0.6);
     text-decoration: none;
     color: #ecf0f1;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     border-radius: 4px;
     align-items: center;
     backdrop-filter: blur(5px);
-
-    &:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-        transform: translateX(5px);
-        box-shadow: -5px 0 0 #ecf0f1;
-    }
 
     div {
         flex: 1;
@@ -110,7 +103,6 @@
         color: #bdc3c7;
         font-family: 'Courier New', Courier, monospace;
         letter-spacing: 4px;
-        animation: pulse 2s infinite;
     }
 }
 
@@ -163,7 +155,6 @@ input, select {
     font-family: 'Courier New', Courier, monospace;
     font-size: 0.9em;
     outline: none;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
     border-radius: 4px;
     width: 100%;
     box-sizing: border-box;
@@ -193,7 +184,6 @@ button {
     font-weight: bold;
     text-transform: uppercase;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
     border-radius: 4px;
     width: 100%;
     letter-spacing: 1px;
@@ -205,12 +195,6 @@ button {
     &:active {
         transform: scale(0.98);
     }
-}
-
-@keyframes pulse {
-    0% { opacity: 0.4; }
-    50% { opacity: 1; }
-    100% { opacity: 0.4; }
 }
 
 @media (max-width: 768px) {
