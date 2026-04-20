@@ -47,22 +47,22 @@ const CREATE_CREATION = gql`
 
 const GET_VOTEABLE = gql`
   query GetVoteable {
-    stories: getCreations(page: 1, category: "story") {
+    stories: getCreations(page: 1, category: "story", in_voting_phase: true) {
       name
       id
     }
 
-    concepts: getCreations(page: 1, category: "concept") {
+    concepts: getCreations(page: 1, category: "concept", in_voting_phase: true) {
       name
       id
     } 
     
-    locations: getCreations(page: 1, category: "location") {
+    locations: getCreations(page: 1, category: "location", in_voting_phase: true) {
       name
       id
     }
 
-    characters: getCreations(page: 1, category: "character") {
+    characters: getCreations(page: 1, category: "character", in_voting_phase: true) {
       name
       id
     } 
