@@ -1,28 +1,33 @@
 <div class="base">
     <div class="lists">
+        @if(!isLoaded) {
+        <h1 class="loading">Loading...</h1>
+        }@else {
         <div class="list">
             <h2>Stories</h2>
             @for(story of stories; track story.id) {
-                <app-creation-link [creation]="story" [isInVotingPhase]="true"/>
+            <app-creation-link [creation]="story" [isInVotingPhase]="true" />
             }
         </div>
         <div class="list">
             <h2>Concepts</h2>
             @for(concept of concepts; track concept.id) {
-                <app-creation-link [creation]="concept" [isInVotingPhase]="true"/>
+            <app-creation-link [creation]="concept" [isInVotingPhase]="true" />
             }
         </div>
         <div class="list">
             <h2>Locations</h2>
             @for(location of locations; track location.id) {
-                <app-creation-link [creation]="location" [isInVotingPhase]="true"/>
+            <app-creation-link [creation]="location" [isInVotingPhase]="true" />
             }
         </div>
         <div class="list">
             <h2>Characters</h2>
             @for(character of characters; track character.id) {
-                <app-creation-link [creation]="character" [isInVotingPhase]="true"/>
+            <app-creation-link [creation]="character" [isInVotingPhase]="true" />
             }
         </div>
+        }
+
     </div>
 </div>

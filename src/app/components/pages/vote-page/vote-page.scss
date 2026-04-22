@@ -44,6 +44,15 @@
     }
 }
 
+.loading {
+    font-size: 2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #bdc3c7;
+    margin: 0;
+}
+
 @media (max-width: 768px) {
     .lists {
         flex-direction: column;

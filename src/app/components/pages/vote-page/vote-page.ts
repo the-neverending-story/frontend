@@ -19,11 +19,13 @@ export class VotePage implements OnInit {
   characters: Creation[] = [];
   concepts: Creation[] = [];
   locations: Creation[] = [];
+  isLoaded = false;
 
   ngOnInit() {
     this.apollo.query<GetVoteableResponse>({
       query: GET_VOTEABLE
     }).subscribe(({ data }) => {
+      this.isLoaded = true;
       this.stories = data!.stories;
       this.characters = data!.characters;
       this.concepts = data!.concepts;
