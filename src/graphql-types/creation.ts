@@ -30,6 +30,7 @@ interface Creation {
   name: string,
   rating: number,
   content: string;
+  relations: string[];
 }
 
 interface Rate {
@@ -70,7 +71,7 @@ const GET_VOTEABLE = gql`
 `
 
 const GET_CREATIONS = gql`
-  query GetCreations($page: Int!, $category: String, $name: String, $author: String ) {
+  query GetCreations($page: Int, $category: String, $name: String, $author: String ) {
     getCreations(page: $page, category: $category, name: $name, author: $author) {
         name
         id
@@ -78,6 +79,7 @@ const GET_CREATIONS = gql`
         rating
         author_username
         category
+        relations
     }
   }
 `

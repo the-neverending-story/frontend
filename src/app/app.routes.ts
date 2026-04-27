@@ -6,6 +6,7 @@ import { CreatePage } from './components/pages/create-page/create-page';
 import { ArchivePage } from './components/pages/archive-page/archive-page';
 import { ArchiveDisplayPage } from './components/pages/archive-display-page/archive-display-page';
 import { VotePage } from './components/pages/vote-page/vote-page';
+import { WebPage } from './components/pages/web-page/web-page';
 
 const routeConfig: Routes = [
     {
@@ -42,6 +43,11 @@ const routeConfig: Routes = [
         path: 'vote',
         component: VotePage,
         title: 'Vote'
+    },
+    {
+        path: 'web',
+        component: WebPage,
+        title: 'Web of Teramir'
     }
 ]
 

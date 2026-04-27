@@ -22,6 +22,7 @@
     "apollo-angular": "^13.0.0",
     "graphql": "^16",
     "ngx-cookie-service": "^21.3.1",
+    "pixi.js": "^8.18.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
