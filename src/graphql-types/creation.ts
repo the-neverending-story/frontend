@@ -31,6 +31,7 @@ interface Creation {
   rating: number,
   content: string;
   relations: string[];
+  is_canon: boolean;
 }
 
 interface Rate {

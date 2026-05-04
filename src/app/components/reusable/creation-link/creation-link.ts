@@ -17,7 +17,8 @@ export class CreationLink {
     author_username: '',
     rating: 0,
     content: '',
-    relations: []
+    relations: [],
+    is_canon: false
   })
 
   isInVotingPhase = input<boolean>(false);

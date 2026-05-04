@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { ResolveFn, Routes } from '@angular/router';
 import { HomePage } from './components/pages/home-page/home-page';
 import {LoginPage} from './components/pages/login-page/login-page'
 import { RegisterPage } from './components/pages/register-page/register-page';
@@ -7,6 +7,11 @@ import { ArchivePage } from './components/pages/archive-page/archive-page';
 import { ArchiveDisplayPage } from './components/pages/archive-display-page/archive-display-page';
 import { VotePage } from './components/pages/vote-page/vote-page';
 import { WebPage } from './components/pages/web-page/web-page';
+import { ProfilePage } from './components/pages/profile-page/profile-page';
+
+const profileTitleResolver: ResolveFn<string> = (route) => {
+    return route.paramMap.get('username') || 'User not found'
+}
 
 const routeConfig: Routes = [
     {
@@ -48,6 +53,11 @@ const routeConfig: Routes = [
         path: 'web',
         component: WebPage,
         title: 'Web of Teramir'
+    },
+    {
+        path: 'profile/:username',
+        component: ProfilePage,
+        title: profileTitleResolver
     }
 ]
 

@@ -11,6 +11,7 @@ export class Login {
   private router: Router = inject(Router)
 
   localStorage = localStorage
+  JSON = JSON
   
   logout() {
     this.localStorage.removeItem('user_data')

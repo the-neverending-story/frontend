@@ -1,0 +1,35 @@
+<div class="base">
+    <div class="profileHalf">
+        @if(loading) {
+        <h2>Loading...</h2>
+        }@else {
+        <div class="icon">
+            <img class="iconImg" src="{{ icon }}" alt="{{ username }}'s profile picture"/>
+        </div>
+        <h2 class="username">{{ username }}</h2>
+        <hr class="divider" />
+        <div class="stats">
+            <div class="stat">
+                <span class="statLabel">Joined</span>
+                <span class="statValue">{{ joinDate }}</span>
+            </div>
+            <div class="stat">
+                <span class="statLabel">Creations</span>
+                <span class="statValue">{{ totalCreations }}</span>
+            </div>
+            <div class="stat">
+                <span class="statLabel">Creation Likes</span>
+                <span class="statValue">{{ totalLikes }}</span>
+            </div>
+            <div class="stat">
+                <span class="statLabel">Canon Creations</span>
+                <span class="statValue">{{ totalCanonized }}</span>
+            </div>
+        </div>
+        }
+    </div>
+    <div class="creationsHalf">
+        <h1 class="creationTitle">{{ username }}'s Creations</h1>
+
+    </div>
+</div>
