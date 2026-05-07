@@ -105,6 +105,7 @@ export class WebPage implements OnInit {
       query: GET_CREATIONS,
       variables: {
         category: "story",
+        page: 1
       }
     }).subscribe({
       next: ({ data }) => {

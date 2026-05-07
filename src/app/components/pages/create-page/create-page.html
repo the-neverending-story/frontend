@@ -1,6 +1,6 @@
 <div class="base">
     <h1>What are we making today?</h1>
-    
+
     <form [formGroup]="creationForm" class="creationForm" (ngSubmit)="submitCreation()">
         <div class="formElement">
             <label for="category">I want to make a new:</label>
@@ -14,15 +14,30 @@
         </div>
 
         @if(this.creationForm.value.category !== "") {
-            <div class="formElement contentDiv">
-                <h2>Let the magic begin...</h2>
+        <div class="formElement contentDiv">
+            <h2>Let the magic begin...</h2>
+            <div class="titleAndRelationSearch">
                 <input class="title" name="title" placeholder="Name" formControlName="name" />
-                <textarea name="content" formControlName="content" placeholder="Content"></textarea>
+                <div class="relationWrapper">
+                    <input class="relationSearch" name="relationSearch" placeholder="Related creations" (input)="search($event)"/>
+                    @if(relations.length > 0) {
+                    <div class="relationResults">
+                        @for(relation of relations; track relation.id) {
+                        <div class="relation">
+                            <input [name]="relation.id" type="checkbox" [checked]="selectedRelations.has(relation.id)" (change)="relationSelected($event, relation.id)"/>
+                            <label [for]="relation.id">{{ relation.name }}</label>
+                        </div>
+                        }
+                    </div>
+                    }
+                </div>
             </div>
+            <textarea name="content" formControlName="content" placeholder="Content"></textarea>
+        </div>
 
-            <button type="submit" [disabled]="!creationForm.valid">
-                Submit Creation
-            </button>
+        <button type="submit" [disabled]="!creationForm.valid">
+            Submit Creation
+        </button>
         }
     </form>
 </div>

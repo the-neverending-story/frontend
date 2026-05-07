@@ -49,7 +49,9 @@ h1 {
     }
 }
 
-select, input, textarea {
+select,
+input,
+textarea {
     background-color: #1a252f;
     border: 1px solid #34495e;
     color: #ecf0f1;
@@ -77,11 +79,121 @@ select {
         font-weight: normal;
     }
 
+    .titleAndRelationSearch {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+        width: 100%;
+    }
+
     .title {
         font-size: 1.2em;
-        margin-bottom: 20px;
-        width: 100%;
+        flex: 1;
         box-sizing: border-box;
+    }
+
+    .relationWrapper {
+        flex: 1;
+        box-sizing: border-box;
+        position: relative;
+
+        .relationSearch {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        &:has(.relationResults) .relationSearch {
+            border-radius: 4px 4px 0 0;
+        }
+
+        .relationResults {
+            background-color: #1a252f;
+            border: 1px solid #34495e;
+            border-top: none;
+            width: 100%;
+            max-height: 150px;
+            overflow-y: auto;
+            position: absolute;
+            z-index: 10;
+            border-radius: 0 0 4px 4px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+
+            &::-webkit-scrollbar {
+                width: 6px;
+            }
+
+            &::-webkit-scrollbar-track {
+                background: #1a252f;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: #34495e;
+                border-radius: 3px;
+            }
+
+            .relation {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 8px 12px;
+                cursor: pointer;
+                border-bottom: 1px solid rgba(52, 73, 94, 0.5);
+
+                &:last-child {
+                    border-bottom: none;
+                }
+
+                &:hover {
+                    background-color: rgba(52, 73, 94, 0.5);
+                }
+
+                input[type="checkbox"] {
+                    appearance: none;
+                    width: 14px;
+                    height: 14px;
+                    min-width: 14px;
+                    border: 1px solid #bdc3c7;
+                    border-radius: 2px;
+                    background-color: transparent;
+                    cursor: pointer;
+                    padding: 0;
+                    position: relative;
+
+                    &:checked {
+                        background-color: #ecf0f1;
+                        border-color: #ecf0f1;
+
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            left: 3px;
+                            top: 0px;
+                            width: 4px;
+                            height: 8px;
+                            border: 2px solid #1a252f;
+                            border-top: none;
+                            border-left: none;
+                            transform: rotate(45deg);
+                        }
+                    }
+
+                    &:focus {
+                        border-color: #ecf0f1;
+                        box-shadow: 0 0 4px rgba(236, 240, 241, 0.3);
+                    }
+                }
+
+                label {
+                    color: #ecf0f1;
+                    font-family: 'Courier New', Courier, monospace;
+                    font-size: 0.95em;
+                    cursor: pointer;
+                    text-transform: none;
+                    letter-spacing: 0;
+                    user-select: none;
+                }
+            }
+        }
     }
 
     textarea {

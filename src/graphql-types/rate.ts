@@ -1,6 +1,6 @@
 import { gql } from "apollo-angular";
 
-interface RateResponseType {
+interface RateResponse {
     rate: {
         id: string
     }
@@ -14,5 +14,5 @@ const RATE = gql`
     }
 `
 
-export type { RateResponseType }
+export type { RateResponse }
 export { RATE }

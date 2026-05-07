@@ -40,8 +40,8 @@ interface Rate {
 }
 
 const CREATE_CREATION = gql`
-  mutation CreateCreation($name: String!, $category: String!, $content: String!) {
-    createCreation(name: $name, category: $category, content: $content) {
+  mutation CreateCreation($name: String!, $category: String!, $content: String!, $relations: [String]) {
+    createCreation(name: $name, category: $category, content: $content, relations: $relations) {
         id
     }
   }
