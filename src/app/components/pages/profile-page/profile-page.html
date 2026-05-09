@@ -30,6 +30,8 @@
     </div>
     <div class="creationsHalf">
         <h1 class="creationTitle">{{ username }}'s Creations</h1>
-
+        @for(creation of creations; track creation.id) {
+        <app-creation-link [creation]="creation" />
+        }
     </div>
 </div>

@@ -26,6 +26,7 @@ const GET_PROFILE = gql`
             name
             rating
             is_canon
+            id
         }
     }
 `
