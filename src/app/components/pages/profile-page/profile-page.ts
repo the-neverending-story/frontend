@@ -33,7 +33,7 @@ export class ProfilePage implements OnInit {
       }
     }).subscribe(({ data }) => {
       this.loading = false;
-      this.joinDate = data!.getUser.created_at
+      this.joinDate = new Intl.DateTimeFormat('en-US').format(Number(data!.getUser.created_at));
       this.creations = data!.getCreations
       this.totalCreations = data!.getCreations.length
       this.totalLikes = data!.getCreations.reduce<number>((a, c) => {

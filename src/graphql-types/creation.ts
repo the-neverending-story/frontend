@@ -25,7 +25,7 @@ interface GetVoteableResponse {
 interface Creation {
   author_username: string,
   category: string,
-  created_at: string,
+  created_at: string, // unix epoch
   id: string,
   name: string,
   rating: number,

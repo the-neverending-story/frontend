@@ -1,10 +1,10 @@
 <div class="base">
+    @if(loading) {
+    <h2 class="loading">Loading...</h2>
+    }@else {
     <div class="profileHalf">
-        @if(loading) {
-        <h2>Loading...</h2>
-        }@else {
         <div class="icon">
-            <img class="iconImg" src="{{ icon }}" alt="{{ username }}'s profile picture"/>
+            <img class="iconImg" src="{{ icon }}" alt="{{ username }}'s profile picture" />
         </div>
         <h2 class="username">{{ username }}</h2>
         <hr class="divider" />
@@ -26,7 +26,6 @@
                 <span class="statValue">{{ totalCanonized }}</span>
             </div>
         </div>
-        }
     </div>
     <div class="creationsHalf">
         <h1 class="creationTitle">{{ username }}'s Creations</h1>
@@ -37,4 +36,5 @@
             }
         </div>
     </div>
+    }
 </div>
