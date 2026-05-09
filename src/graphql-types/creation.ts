@@ -72,8 +72,8 @@ const GET_VOTEABLE = gql`
 `
 
 const GET_CREATIONS = gql`
-  query GetCreations($page: Int, $category: String, $name: String, $author: String ) {
-    getCreations(page: $page, category: $category, name: $name, author: $author) {
+  query GetCreations($page: Int, $category: String, $name: String, $author: String, $isCanon: Boolean ) {
+    getCreations(page: $page, category: $category, name: $name, author: $author, isCanon: $isCanon) {
         name
         id
         created_at

@@ -22,7 +22,7 @@ const GET_PROFILE = gql`
             role
         }
 
-        getCreations(author: $username) {
+        getCreations(author: $username, page: 1) {
             name
             rating
             is_canon

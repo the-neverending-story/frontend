@@ -15,7 +15,7 @@ export class ArchivePage implements OnInit {
   private ref: ChangeDetectorRef = inject(ChangeDetectorRef)
 
   filterForm = new FormGroup({
-    category: new FormControl('none'),
+    category: new FormControl(''),
     name: new FormControl(''),
     author: new FormControl('')
   })
