@@ -22,4 +22,8 @@ export class CreationLink {
   })
 
   isInVotingPhase = input<boolean>(false);
+
+  getCreationDate() {
+    return new Intl.DateTimeFormat('en-US').format(Number(this.creation().created_at));
+  }
 }

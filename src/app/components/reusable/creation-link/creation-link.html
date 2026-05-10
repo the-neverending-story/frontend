@@ -3,7 +3,7 @@
     @if(!isInVotingPhase()) {
     <div class="category">{{ creation().category }}</div>
     <div class="author">{{ creation().author_username }}</div>
-    <div class="createdAt">{{ creation().created_at }}</div>
+    <div class="createdAt">{{ getCreationDate() }}</div>
     <div class="rating">{{ creation().rating }}</div>
     }
 </a>
