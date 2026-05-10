@@ -101,5 +101,19 @@ const GET_CREATION = gql`
   }
 `
 
-export type { CreateCreationResponse, GetCreationsResponse, Creation, GetCreationResponse, GetVoteableResponse }
-export { CREATE_CREATION, GET_CREATIONS, GET_CREATION, GET_VOTEABLE }
+const GET_FEATURED_CREATIONS = gql`
+  query GetFeaturedCreations {
+    getFeaturedCreations {
+      name
+      id
+      category
+    }
+  }
+`
+
+interface GetFeaturedCreationsResponse {
+  getFeaturedCreations: Creation[]
+}
+
+export type { CreateCreationResponse, GetCreationsResponse, Creation, GetCreationResponse, GetVoteableResponse, GetFeaturedCreationsResponse }
+export { CREATE_CREATION, GET_CREATIONS, GET_CREATION, GET_VOTEABLE, GET_FEATURED_CREATIONS }

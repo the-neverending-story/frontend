@@ -1,4 +1,24 @@
 <main class="homePage">
     <h1>Welcome to the World of Teramir!</h1>
     <h3>Join a collaborative, everchanging story</h3>
+    <hr>
+    <h4>Today's highlighted creations</h4>
+    <div class="creations-track">
+        <div class="creations">
+            @for(creation of creations; track creation.id) {
+            <a class="creation" [routerLink]="['/archive', creation.id]">
+                <span class="creation-category">{{ creation.category }}</span>
+                <span class="creation-name">{{ creation.name }}</span>
+            </a>
+            }
+        </div>
+        <div class="creations">
+            @for(creation of creations; track creation.id) {
+            <a class="creation" [routerLink]="['/archive', creation.id]">
+                <span class="creation-category">{{ creation.category }}</span>
+                <span class="creation-name">{{ creation.name }}</span>
+            </a>
+            }
+        </div>
+    </div>
 </main>

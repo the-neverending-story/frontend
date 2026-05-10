@@ -28,3 +28,71 @@ h3 {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
     font-weight: normal;
 }
+
+hr {
+    width: 60%;
+    border: none;
+    border-top: 1px solid rgba(212, 175, 55, 0.4);
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.2);
+    margin: 20px 0;
+}
+
+h4 {
+    font-size: 1.1em;
+    color: #d4a017;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0px;
+    font-weight: 600;
+    text-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+}
+
+.creations-track {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    margin-top: 20px;
+    mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+}
+
+.creations {
+    display: flex;
+    flex-shrink: 0;
+    animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-100%); }
+}
+
+.creation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(180, 130, 30, 0.18), rgba(90, 60, 10, 0.28));
+    border: 1px solid rgba(212, 175, 55, 0.55);
+    border-radius: 8px;
+    padding: 12px 20px;
+    margin-right: 16px;
+    white-space: nowrap;
+    min-width: 140px;
+    box-shadow: 0 2px 14px rgba(212, 175, 55, 0.18), inset 0 1px 0 rgba(255, 220, 100, 0.12);
+    text-decoration: none;
+
+    .creation-category {
+        font-size: 0.75em;
+        color: #d4a017;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 4px;
+        font-weight: 600;
+    }
+
+    .creation-name {
+        font-size: 1em;
+        color: #fef3c7;
+    }
+}
