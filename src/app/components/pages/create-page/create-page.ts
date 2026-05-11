@@ -50,6 +50,7 @@ export class CreatePage implements OnInit {
       variables: {
         page: 1,
         name: substring,
+        isCanon: true,
       }
     }).subscribe({
       next: ({ data }) => {
