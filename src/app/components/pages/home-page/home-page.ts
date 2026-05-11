@@ -20,7 +20,7 @@ export class HomePage implements OnInit {
       query: GET_FEATURED_CREATIONS,
     }).subscribe({  
       next: ({ data }) => {
-        this.creations = data!.getFeaturedCreations
+        this.creations = Array(5).fill(data!.getFeaturedCreations).flat()
         this.ref.detectChanges()
       }
     })
