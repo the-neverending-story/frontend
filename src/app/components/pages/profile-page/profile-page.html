@@ -26,6 +26,8 @@
                 <span class="statValue">{{ totalCanonized }}</span>
             </div>
         </div>
+        <h3 class="bioTitle">User Bio</h3>
+        <textarea class="bio" [readonly]="bioReadOnly" (click)="setBioReadOnly(false)" (blur)="setBioReadOnly(true)" (keydown)="editBio($event)">{{ userBio }}</textarea>
     </div>
     <div class="creationsHalf">
         <h1 class="creationTitle">{{ username }}'s Creations</h1>

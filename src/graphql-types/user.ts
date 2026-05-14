@@ -5,7 +5,8 @@ interface User {
     id: string,
     username: string,
     created_at: string,
-    role: string
+    role: string,
+    bio: string
 }
 
 interface GetProfileResponse {
@@ -20,6 +21,7 @@ const GET_PROFILE = gql`
             username
             created_at
             role
+            bio
         }
 
         getCreations(author: $username, page: 1) {
@@ -27,9 +29,16 @@ const GET_PROFILE = gql`
             rating
             is_canon
             id
+            created_at
         }
     }
 `
 
+const UPDATE_USER = gql`
+    mutation UpdateUser($bio: String) {
+        updateUser(bio: $bio)
+    }
+`
+
 export type { GetProfileResponse }
-export { GET_PROFILE }
+export { GET_PROFILE, UPDATE_USER }
