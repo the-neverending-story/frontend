@@ -1,1 +1,1 @@
-repo for a website where users can vote on other users' creations to add to the story
+repo for a website where users can vote on other users' creations to add to a grander, overarching story

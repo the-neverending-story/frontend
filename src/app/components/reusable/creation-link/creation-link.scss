@@ -1,48 +1,82 @@
 :host {
-    display: block;
-    width: 100%;
+  display: block;
 }
 
 .archiveItem {
-    height: 75px;
-    display: flex;
-    padding: 12px 20px;
-    background-color: rgba(26, 37, 47, 0.6);
-    text-decoration: none;
-    color: #ecf0f1;
-    border-radius: 4px;
-    align-items: center;
-    backdrop-filter: blur(5px);
-    width: 100%;
-    box-sizing: border-box;
+  display: block;
+  padding: 0.9rem 1.4rem;
+  color: inherit;
+  border-bottom: 1px solid var(--line);
+  transition: background 0.16s var(--ease), color 0.16s var(--ease);
 
-    &:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-    }
+  &:hover {
+    background: linear-gradient(90deg, rgba(211, 172, 84, 0.09), transparent);
+  }
+}
 
-    .name {
-        flex: 2;
-        text-align: left;
-        font-weight: bold;
-        font-size: 1em;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
+:host(:last-child) .archiveItem {
+  border-bottom: none;
+}
 
-    .category, .author, .createdAt, .rating {
-        flex: 1;
-        text-align: center;
-        font-family: 'Courier New', Courier, monospace;
-        font-size: 0.95em;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        border-left-width: 1px;
-        border-left-style: solid;
-        border-left-color: white;
-    }
+.name {
+  font-family: var(--font-display);
+  color: var(--ink);
+  transition: color 0.16s var(--ease);
+}
+.archiveItem:hover .name {
+  color: var(--gold-bright);
+}
 
-    .category { text-transform: capitalize; color: #bdc3c7; }
-    .rating { font-weight: bold; color: #f1c40f; }
+/* ---- table / archive mode: meta columns present ---- */
+.archiveItem:has(.category) {
+  display: grid;
+  grid-template-columns: var(--archive-grid);
+  gap: 1rem;
+  align-items: center;
+
+  .name {
+    font-size: 1rem;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.category {
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  text-transform: capitalize;
+  color: var(--arcane);
+}
+.author {
+  font-size: 0.85rem;
+  color: var(--ink-dim);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.createdAt {
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+}
+.rating {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-align: right;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- voting mode: name only ---- */
+.archiveItem:not(:has(.category)) {
+  padding: 0.7rem 0.9rem;
+  border-radius: var(--r-sm);
+  border-bottom: none;
+
+  .name {
+    font-size: 0.98rem;
+    color: var(--ink-soft);
+  }
 }

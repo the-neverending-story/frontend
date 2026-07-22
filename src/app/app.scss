@@ -1,20 +1,31 @@
+:host {
+  display: block;
+}
+
+/* full-viewport frame: fixed top navigation + scrollable content region */
 .base {
-    background-color: #1a252f;
-    height: 100vh;
-    width: 100vw;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
 }
 
 .menuHolder {
-    position: absolute;
-    height: 40px;
-    width: 100%;
-    top: 0;
-    left: 0;
+  position: relative;
+  z-index: 20;
+  flex-shrink: 0;
+  height: var(--nav-h);
+  background: linear-gradient(180deg, rgba(23, 34, 47, 0.97), rgba(15, 24, 34, 0.97));
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--hairline-gold);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
 }
 
 .outletHolder {
-    position: absolute;
-    height: calc(100vh - 60px);
-    width: 100%;
-    top: 60px;
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
